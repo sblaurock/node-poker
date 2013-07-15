@@ -1,0 +1,638 @@
+/* OPTIMIZE AND MINIMIZE THIS - Way over complicated and messy. */
+
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2012 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Fontfabric
+ * License URL: http://www.fontspring.com/fflicense/fontfabric
+ *
+ */
+
+@font-face {
+    font-family: 'nexa_boldregular';
+    src: url('../fonts/Nexa_Free_Bold-webfont.eot');
+    src: url('../fonts/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Nexa_Free_Bold-webfont.woff') format('woff'),
+         url('../fonts/Nexa_Free_Bold-webfont.ttf') format('truetype'),
+         url('../fonts/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'nexa_lightregular';
+    src: url('../fonts/Nexa_Free_Light-webfont.eot');
+    src: url('../fonts/Nexa_Free_Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Nexa_Free_Light-webfont.woff') format('woff'),
+         url('../fonts/Nexa_Free_Light-webfont.ttf') format('truetype'),
+         url('../fonts/Nexa_Free_Light-webfont.svg#nexa_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: url('../img/background.jpg') repeat;
+	font-size: 1em;
+	font-family: verdana;
+	color: #fff;
+}
+
+input[type='text'], input[type='password'] {
+	border: 1px solid #282828;
+	background-color: #363636;
+	background-image: -moz-linear-gradient(top, #222, #1d1d1d);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#1d1d1d));
+	background-image: -webkit-linear-gradient(top, #222, #1d1d1d);
+	background-image: -o-linear-gradient(top, #222, #1d1d1d);
+	background-image: linear-gradient(to bottom, #222, #1d1d1d);
+	background-repeat: repeat-x;
+	color: #fff;
+}
+
+#account {
+	background: rgba(0, 0, 0, .8);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+#account.fade {
+	-webkit-transition: opacity .15s linear;
+	-moz-transition: opacity .15s linear;
+	-o-transition: opacity .15s linear;
+	transition: opacity .15s linear;
+}
+
+#account.fade.in {
+	bottom: 0;
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+#manage {
+	background: url('../img/background.jpg') repeat;
+	position: absolute;
+	width: 400px;
+	left: 50%;
+	top: -350px;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	margin: 0 0 0 -200px;
+	padding: 20px 30px 23px 30px;
+	-webkit-border-bottom-right-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	border: 1px solid #0a0a0a;
+}
+
+#account.fade #manage {
+	-webkit-transition: opacity 0.3s linear, top 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s linear, top 0.3s ease-in-out;
+	-o-transition: opacity 0.3s linear, top 0.3s ease-in-out;
+	transition: opacity 0.3s linear, top 0.3s ease-in-out;
+}
+
+#account.fade.in #manage {
+	top: 0;
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+#manage span {
+	font-family: 'nexa_lightregular';
+	color: #eee;
+	font-size: 1.8em;
+	padding: 0 0 17px 0;
+	margin: 0 0 5px 0;
+	display: block;
+	border-bottom: 1px solid #2a2a2a;
+}
+
+#close {
+	float: right;
+	font-family: 'nexa_lightregular';
+	color: #666;
+	font-size: 1.8em;
+	cursor: pointer;
+}
+
+#manage p {
+	color: #888;
+	font-size: .7em;
+	margin: 0 0 15px 0;
+	display: block;
+}
+
+#manage button {
+	margin: 11px 0 0 0;
+	display: block;
+}
+
+.error {
+	color: #cc0000 !important;
+}
+
+#status {
+	margin: 0;
+}
+
+#status-inner {
+	border-top: 3px solid #369;
+	margin: 0;
+	-moz-box-shadow: -1px 0 3px 1px #181818;
+	-webkit-box-shadow: -1px 0 3px 1px #181818;
+	box-shadow: -1px 0 3px 1px #181818;
+	min-height: 35px;
+	line-height: 35px;
+	font-size: .8em;
+	padding: 0 20px 2px 20px;
+	color: #666;
+}
+
+#update span {
+	color: #ccc;
+}
+
+#users {
+	text-align: right;
+	color: #666;
+}
+
+#users span {
+	color: #999;
+	padding: 0 5px 0 0;
+}
+
+#funds-symbol {
+	font-family: 'nexa_boldregular';
+	background: #eee;
+	height: 35px;
+	width: 35px;
+	float: left;
+	margin: 19px 10px 0 0;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.6em;
+	line-height: 1.45;
+	padding: 0 0 0 2px;
+	color: #111;
+}
+
+#funds {
+	font-family: 'nexa_lightregular';
+	color: #eee;
+	font-size: 3.5em;
+	margin: 30px 0 15px 0;
+	float: left;
+}
+
+#gametype {
+	clear: both;
+	font-family: 'nexa_lightregular';
+	color: #eee;
+	display: block;
+	font-size: 1.04em;
+	margin: 15px 0 15px 50px;
+	text-transform: uppercase;
+}
+
+/* Everything below is for layout testing */
+#chat {
+	height: 540px;
+	background: rgba(0, 0, 0, .20);
+	border: 1px solid #121212;
+	-webkit-border-bottom-right-radius: 1px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 1px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 1px;
+	border-bottom-left-radius: 15px;
+}
+
+#chat-messages {
+	height: 495px;
+	overflow: auto;
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	box-shadow: inset 0 0 5px #111;
+	word-wrap: break-word;
+	background: rgba(0, 0, 0, .05);
+}
+
+#chat-messages div {
+	padding: 7px 7px 0 10px;
+}
+
+#chat-messages p {
+	margin: 0;
+	font-size: .7em;
+	border-bottom: 1px solid #222;
+	padding: 0 0 7px 0;
+}
+
+#chat-messages b {
+	color: #bbb;
+}
+
+#chat-input {
+	border-top: 1px solid #222;
+	padding: 7px 0 0 0;
+	text-align: center;
+}
+
+#chat-input input[type='text'] {
+	width: 70%;
+}
+
+#chat-input button {
+	width: 20%;
+}
+
+.odd {
+	background: rgba(0, 0, 0, .25);
+}
+
+.self {
+	color: #ff9;
+}
+
+.system {
+	color: #a336c2;
+}
+
+#last p {
+	border-bottom: none !important;
+}
+
+#footer {
+	margin: 25px 0 0 0;
+	border-right: 2px solid #369;
+	font-size: .7em;
+	text-shadow: 0.1em 0.1em #000;
+	line-height: 1.7em;
+	text-align: right;
+	padding: 0 10px 0 0;
+}
+
+#hand {
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	padding: 10px 15px 20px 15px;
+	-webkit-border-bottom-right-radius: 1px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 1px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 1px;
+	border-bottom-left-radius: 15px;
+	background: rgba(0, 0, 0, .20);
+	border: 1px solid #121212;
+}
+
+#community {
+	padding: 10px 15px 20px 15px;
+}
+
+#hand span, #community span, #pot span {
+	display: block;
+	font-size: .6em;
+	text-transform: uppercase;
+	font-family: 'nexa_boldregular';
+	letter-spacing: .7em;
+	border-bottom: 1px solid #2A2A2A;
+	margin: 0 0 10px 0;
+	padding: 0 0 5px 3px;
+	color: #ccc;
+}
+
+#hand .card, #community .card {
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background: url('../img/cards-ratio.png') no-repeat;
+	max-width: 144px;
+	float: left;
+}
+
+.card.flip {
+	-webkit-transition: rotateZ(180deg);
+	-moz-transition: rotateZ(180deg);
+	-o-transition: rotateZ(180deg);
+	transform: rotateZ(180deg);
+}
+
+.card.flip.in {
+	transition: transform 1s ease-in-out;
+}
+
+.divider {
+	height: 1px;
+	float: left;
+	display: block;
+}
+
+#players {
+	margin: 20px 0 0 0;
+}
+
+.player {
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	box-shadow: inset 0 0 10px #111;
+	padding: 10px 15px 11px 15px;
+	-webkit-border-bottom-right-radius: 1px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 1px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 1px;
+	border-bottom-left-radius: 15px;
+	background: rgba(0, 0, 0, .20);
+	border: 1px solid #121212;
+	height: 87px;
+}
+
+.player span {
+	display: block;
+}
+
+.identity, .open span {
+	border-bottom: 1px solid #2A2A2A;
+	padding: 0 0 3px 0;
+	margin: 0 0 3px 0;
+}
+
+.attributes {
+	float: right;
+}
+
+.attributes div {
+	position: absolute;
+	float: left;
+	margin: -20px 0 0 -10px;
+	height: 16px;
+	width: 16px;
+	background: #eee;
+	border: 1px solid #eee;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+.attributes div span {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	box-shadow: inset 0 0 10px #111;
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	width: 16px;
+	height: 16px;
+	font-size: .6em;
+	line-height: 1.7em;
+	color: #eee;
+	text-align: center;
+	font-weight: bold;
+}
+
+.big span {
+	background: #821212;
+}
+
+.small span {
+	background: #29337b;
+}
+
+.dealer span {
+	color: #000 !important;
+	background: #ddd;
+}
+
+.active {
+	background: rgba(51, 102, 153, .17);
+}
+
+.active .name {
+	border-bottom: 1px solid #1d1d1d !important;
+}
+
+.name, .open span {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	font-family: 'nexa_lightregular';
+	overflow: hidden;
+}
+
+.open {
+	text-align: center;
+}
+
+.open button {
+	margin: 4px 0 0 0;
+}
+
+#actions {
+	margin: 20px 0 0 0;
+}
+
+#actions {
+	padding: 10px 15px 11px 15px;
+	border-right: 1px solid #121212;
+	-webkit-border-top-right-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	border-top-right-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	-moz-box-shadow: 0 1px 3px 1px #181818;
+	-webkit-box-shadow: 0 1px 3px 1px #181818;
+	box-shadow: 0 1px 3px 1px #181818;
+	background: rgba(255, 255, 255, .02);
+	position: relative;
+}
+
+.action {
+	font-size: .8em;
+	line-height: 1.4em;
+	font-style: italic;
+	color: #666;
+}
+
+#actions .action span {
+	font-style: normal;
+	font-family: 'nexa_lightregular';
+	font-size: 1.4em;
+	color: #ddd;
+	margin: 2px 0 0 0;
+	display: block;
+}
+
+.selector {
+	box-shadow: inset 0 0 10px #111;
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	-webkit-border-bottom-right-radius: 1px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 1px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 1px;
+	border-bottom-left-radius: 15px;
+	background: rgba(0, 0, 0, .07);
+	border: 1px solid #121212;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	height: 35px;
+	width: 35px;
+	float: left;
+	margin: 0 10px 0 0;
+	cursor: pointer;
+}
+
+#selected {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	height: 15px;
+	width: 15px;
+	background: rgba(51, 102, 153, .50);
+	margin: 10px 0 0 10px;
+	-moz-box-shadow: inset 0 0 5px #222;
+	-webkit-box-shadow: inset 0 0 5px #222;
+}
+
+.funds, .status {
+	line-height: 1.4em;
+}
+
+.funds {
+	font-size: .8em;
+	color: #bbb;
+}
+
+.status {
+	font-size: .8em;
+	font-style: italic;
+	color: #666;
+}
+
+#pot {
+	padding: 20px 0 0 0;
+}
+
+.arrow {
+	font-size: 7em;
+	margin: 37px 0 0 0;
+	font-family: 'nexa_boldregular';
+	color: #191919;
+	display: block;
+	text-shadow: 0px 1px 1px #333;
+}
+
+#pot-value {
+	font-family: 'nexa_lightregular';
+	color: #eee;
+	font-size: 3.5em;
+	float: left;
+	margin: 20px 0 0 0;
+}
+
+#pot-container {
+	padding: 0 0 0 10px;
+}
+
+#pot-symbol {
+	font-family: 'nexa_boldregular';
+	background: #eee;
+	height: 35px;
+	width: 35px;
+	float: left;
+	margin: 9px 10px 0 0;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.6em;
+	line-height: 1.45;
+	padding: 0 0 0 2px;
+	color: #111;
+}
+
+#sub-actions {
+	margin: 12px 0 0 -16px;
+	position: absolute;
+	width: 100%;
+}
+
+#raise {
+	-moz-box-shadow: inset 0 0 10px #111;
+	-webkit-box-shadow: inset 0 0 10px #111;
+	padding: 10px 15px 6px 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	background: rgba(0, 0, 0, .20);
+	border: 1px solid #121212;
+	width: auto;
+}
+
+#raise .add-on {
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #363636;
+	*background-color: #222222;
+	background-image: -moz-linear-gradient(top, #444444, #222222);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+	background-image: -webkit-linear-gradient(top, #444444, #222222);
+	background-image: -o-linear-gradient(top, #444444, #222222);
+	background-image: linear-gradient(to bottom, #444444, #222222);
+	background-repeat: repeat-x;
+	border-color: #222222 #222222 #000000;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	padding: 3px 5px 5px 5px;
+	color: #999;
+}
+
+#sub-status {
+	font-size: .8em;
+	padding: 15px 0 0 0;
+	color: #999;
+}
