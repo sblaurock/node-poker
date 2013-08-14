@@ -56,6 +56,16 @@ define(["prototype", "send"], function(Prototype, send) {
 		},
 		updatePot: function(amount) {
 			this.dom.pot.innerHTML = parseInt(amount).format();
+		},
+		setFocus: function(seat) {
+			console.log(seat);
+			this.dom.players.each(function(player) {
+				if(player.hasClassName('active')) {
+					player.removeClassName('active');
+				}
+			});
+
+			$('p' + seat).addClassName('active');
 		}
 	});
 

@@ -406,13 +406,13 @@
 			</div>
 		</div>
 <?php
-	if($_SERVER['REMOTE_ADDR'] == '::1') {
-		$host = 'localhost';
-	} else {
-		$host = 'PUBLIC_IP';
-	}
+		if($_SERVER['REMOTE_ADDR'] == '::1') {
+				$host = 'localhost';
+		} else {
+			$host = 'PUBLIC_IP';
+		}
 ?>
-		<input type="hidden" id="ip" value="<?php echo $host; ?>" />
+		<input type="hidden" id="ip" value="localhost" />
 		<script data-main="includes/js/init" src="includes/js/lib/require.js"></script>
 	</body>
 </html>

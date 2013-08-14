@@ -70,7 +70,7 @@ define(["lib/inheritance", "send", "redis"], function(i, send, redis){
 		}
 	});
 
-	//redis.flushall();
+	redis.flushall();
 
 	return Account
 });

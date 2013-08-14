@@ -4,7 +4,8 @@ define(["prototype"], function() {
 			this.dom = {
 				users: $('users'),
 				funds: $('funds'),
-				update: $('update')
+				update: $('update'),
+				status: $('sub-status')
 			},
 			this.updates = {
 				countdown: 'New round will start in: '
@@ -20,7 +21,7 @@ define(["prototype"], function() {
 		updateFunds: function(funds) {
 			this.dom.funds.innerHTML = (parseInt(funds)).format();
 		},
-		setUpdate: function(type, content) {
+		setUpdate: function(content, type) {
 			if(this.updates[type]) {
 				if(type === 'countdown') {
 					var that = this;
@@ -34,7 +35,12 @@ define(["prototype"], function() {
 						that.dom.update.innerHTML = that.updates.countdown + --content;
 					}, 1000);
 				}
+			} else {
+				this.dom.update.innerHTML = content;
 			}
+		},
+		setStatus: function(content) {
+			this.dom.status.innerHTML = content;
 		}
 	});
 

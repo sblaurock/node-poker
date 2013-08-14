@@ -445,7 +445,7 @@ input[type='text'], input[type='password'] {
 	background: rgba(51, 102, 153, .17);
 }
 
-.active .name {
+.active .identity {
 	border-bottom: 1px solid #1d1d1d !important;
 }
 

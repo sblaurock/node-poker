@@ -8,7 +8,7 @@ define(["lib/inheritance", "send", "classes/poker"], function(i, send, PokerClas
 				_guests: 0,
 				_maxPlayers: 6,
 				_minPlayers: 2,
-				_startDelay: 15,
+				_startDelay: 3,
 				_startFunds: 5000,
 				_blind: 50
 			}
@@ -63,7 +63,7 @@ define(["lib/inheritance", "send", "classes/poker"], function(i, send, PokerClas
 					send.client(socket, 'Status.updateFunds', [ player.funds ]);
 
 					if(game.getParam('players') >= game.getParam('minPlayers')){
-						send.all('Status.setUpdate', [ 'countdown', game.getParam('startDelay') ]);
+						send.all('Status.setUpdate', [ game.getParam('startDelay'), 'countdown' ]);
 						game.buffer = setTimeout(function() {
 							game.newRound();
 						}, (game.getParam('startDelay') * 1000));
@@ -151,6 +151,10 @@ define(["lib/inheritance", "send", "classes/poker"], function(i, send, PokerClas
 					hand = 2;
 				}
 			}
+
+			// Update the UI of the player in focus.
+			//  > Big blind player should not be the first player to gain focus.
+			this.setTurn(this.seats[this.round[this.round['bigBlind']]]);
 		},
 		updateFunds: function(username, operation, amount) {
 			var newFunds = 0;
@@ -171,8 +175,17 @@ define(["lib/inheritance", "send", "classes/poker"], function(i, send, PokerClas
 		},
 		updatePot: function(amount) {
 			var newAmount = this.pot + amount;
+
 			this.pot = newAmount;
 			send.all('Game.updatePot', [ newAmount ]);
+		},
+		setTurn: function(socket) {
+			var username = this.online[socket.id];
+
+			// Should we push this functionality onto the client side?
+			send.all('Status.setUpdate', [ 'Waiting for ' + username + '...' ]);
+			send.all('Game.setFocus', [ this.players[username].seat ]);
+			send.client(socket, 'Status.setStatus', [ 'It\'s your turn! Select an action above.' ]);
 		}
 	});
 
